@@ -1,29 +1,39 @@
-alert(typeof window.supabase);
-
-const supabase = window.supabase.createClient(
+onst supabase = window.supabase.createClient(
     "https://ijgefaknhzydvppkiysr.supabase.co",
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlqZ2VmYWtuaHp5ZHZwcGtpeXNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQyMzUwNDIsImV4cCI6MjA5OTgxMTA0Mn0.GTrUIAhd11BC5bBjwGdlSBBe6d2xV19bn2hged5pc6g"
 );
 
-document.getElementById("createBtn").addEventListener("click", async () => {
+const createBtn = document.getElementById("createBtn");
 
-    alert("Button works!");
+createBtn.addEventListener("click", async () => {
 
-    const email = document.getElementById("email").value;
+    const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
 
-    const { data, error } = await supabase.auth.signUp({
-        email,
-        password
-    });
-
-    if (error) {
-        alert(error.message);
-        console.log(error);
+    if (!email || !password) {
+        alert("Enter your email and password.");
         return;
     }
 
-    alert("Supabase signup successful!");
-    console.log(data);
+    try {
+
+        const { data, error } = await supabase.auth.signUp({
+            email,
+            password
+        });
+
+        if (error) {
+            console.error(error);
+            alert(error.message);
+            return;
+        }
+
+        console.log(data);
+        alert("Account created successfully!");
+
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
 
 });
