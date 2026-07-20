@@ -1,25 +1,41 @@
-const user = JSON.parse(localStorage.getItem("user"));
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Narrate Dashboard</title>
 
-if (!user) {
-    window.location.href = "/";
-}
+<link rel="stylesheet" href="css/styles.css">
 
-document.getElementById("welcome").textContent =
-    "Welcome, " + user.username;
+</head>
 
-document.getElementById("paperBalance").textContent =
-    "$" + user.paper_balance.toLocaleString();
+<body>
 
-document.getElementById("cred").textContent =
-    user.cred;
+<div class="container">
 
-document.getElementById("realBalance").textContent =
-    "$" + user.real_balance.toLocaleString();
+<h1 id="welcome"></h1>
 
-document.getElementById("referral").textContent =
-    user.referral_code;
+<div class="card">
 
-document.getElementById("logout").onclick = () => {
-    localStorage.removeItem("user");
-    window.location.href = "/";
-};
+<h2>Paper Account</h2>
+
+<p>Paper Balance: <span id="paperBalance"></span></p>
+
+<p>Cred: <span id="cred"></span></p>
+
+<p>Real Balance: <span id="realBalance"></span></p>
+
+<p>Referral Code: <span id="referral"></span></p>
+
+</div>
+
+<button id="logout" class="primary">
+Logout
+</button>
+
+</div>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
