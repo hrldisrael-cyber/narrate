@@ -1,103 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+const user = JSON.parse(localStorage.getItem("user"));
 
-<head>
+if (!user) {
+    window.location.href = "/";
+}
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+document.getElementById("welcome").textContent =
+    "Welcome, " + user.username;
 
-<title>Narrate Dashboard</title>
+document.getElementById("paperBalance").textContent =
+    "$" + user.paper_balance.toLocaleString();
 
-<link rel="stylesheet" href="css/styles.css">
+document.getElementById("cred").textContent =
+    user.cred;
 
-</head>
+document.getElementById("realBalance").textContent =
+    "$" + user.real_balance.toLocaleString();
 
-<body>
+document.getElementById("referral").textContent =
+    user.referral_code;
 
-<div class="background-glow"></div>
-
-<div class="dashboard">
-
-<header class="topbar">
-
-<div>
-
-<h2>Welcome back</h2>
-
-<p id="username">Trader</p>
-
-</div>
-
-<img
-src="https://i.postimg.cc/JyJYHZ18/20250301-124818.jpg"
-class="avatar">
-
-</header>
-
-<div class="portfolio-card">
-
-<div>
-
-<p>Portfolio Value</p>
-
-<h1>$100,000.00</h1>
-
-</div>
-
-<button class="toggle">
-
-Paper
-
-</button>
-
-</div>
-
-<div class="section">
-
-<h3>Trending</h3>
-
-<div class="token">
-
-<span>BTC</span>
-
-<span>$118,520</span>
-
-</div>
-
-<div class="token">
-
-<span>ETH</span>
-
-<span>$4,120</span>
-
-</div>
-
-<div class="token">
-
-<span>SOL</span>
-
-<span>$281</span>
-
-</div>
-
-</div>
-
-<nav class="bottom-nav">
-
-<button>Home</button>
-
-<button>Markets</button>
-
-<button>Trade</button>
-
-<button>Feed</button>
-
-<button>Profile</button>
-
-</nav>
-
-</div>
-
-</body>
-
-</html>
+document.getElementById("logout").onclick = () => {
+    localStorage.removeItem("user");
+    window.location.href = "/";
+};
