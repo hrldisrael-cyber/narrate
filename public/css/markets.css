@@ -1,0 +1,73 @@
+:root{
+    --bg:#09090B;
+    --surface:#111827;
+    --surface2:#1A1F2E;
+    --border:#232838;
+    --primary:#8B5CF6;
+    --text:#FFFFFF;
+    --muted:#9CA3AF;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,sans-serif;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+}
+
+.page{
+    max-width:480px;
+    margin:auto;
+    padding:20px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:24px;
+}
+
+.search{
+    width:100%;
+    margin-bottom:24px;
+}
+
+.search input{
+    width:100%;
+    padding:16px;
+    border-radius:16px;
+    border:1px solid var(--border);
+    background:var(--surface);
+    color:white;
+    outline:none;
+}
+
+.market-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:18px;
+    margin-bottom:14px;
+}
+
+.market-name{
+    font-size:20px;
+    font-weight:700;
+}
+
+.market-price{
+    color:var(--muted);
+    margin-top:6px;
+}
+
+.market-change{
+    color:#22C55E;
+    margin-top:10px;
+    font-weight:600;
+}
